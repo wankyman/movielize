@@ -1,7 +1,7 @@
 import streamlit 
 import os , pandas as pd
-import sys , time , aiohttp
-import plotly.express
+import sys , time
+import plotly.express as fancyplot
 
 import matplotlib.pyplot as plotlib
 import matplotlib
@@ -24,8 +24,10 @@ def find(name:str):
     return tmplist
 
 
-# name = input("Enter Movie to find: ")
+votes = data["Votes"]
 
-# result = find(name)
+title = data["Title"]
 
-# print(result)
+graph = fancyplot.bar(y=votes,x=title)
+
+streamlit.plotly_chart(graph)
