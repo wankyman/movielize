@@ -24,10 +24,9 @@ def find(name:str):
     return tmplist
 
 
-votes = data["Votes"]
+genre_types = data["Genre"].drop_duplicates()
 
-title = data["Title"]
+dropdown = streamlit.selectbox("Select Genre",genre_types)
 
-graph = fancyplot.bar(y=votes,x=title)
-
-streamlit.plotly_chart(graph)
+if dropdown == "Action":
+    streamlit.write("Action")
